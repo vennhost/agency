@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+ASSIGNMENT RULES
+        - This is exercise should be done in couples
+        - Implement one exercise each
+        - We suggest you to use Visual Studio Code Live Sharing for working "together" on the code ( https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack )
+        - We suggest you to use Slack to speak to each other
+
+        - The solution must be pushed to the repository and be available for the tutors by the end of the day
+        - You can ask for tutor's help
+        - You can google / use StackOverflow BUT we suggest you to use just the material provided
+        - To test the page, just open it with your default browser.
+        - Use Bootstrap4 classes to render the page.
+        - Use correctly containers and rows in order to have a great display
+
+
+        You are implementing a website for a Travel Agency.
+        In the page you can add all the destination you'd like to go in the next future!
+
+
+        Ex 1) Implement a navigation bar, connected to all the sections of the page. 
+        Ex 2) Add a logo into the navigation bar 
+        Ex 3) Add a Jumbotron section in which you present name and claim of the tour operator
+        Ex 4) Implement the "Deal of the Week" section. In this section you'll display 4 destinations.
+         In this section you should have:
+            - 4 destinations per row when the screen is very large
+            - 3 destinations per row when you are on a tablet (or a smaller window)
+            - 2 destinations per row when you are on a small screen
+
+        Ex 5) Implement the "Welcome Summer" section. In this section you'll propose 6 destinations
+            In this section you should have:
+                - 6 destinations per row when the screen is very large
+                - 3 destinations per row when you are on a tablet (or a smaller window)
+                - 2 destinations per row when you are on a small screen
+        
+        Ex 6) Implement a "Deal of the day" section. In this section you'll have:
+            - 66% of the page with a picture of the destination
+            - 33% with Name, dates, price and a short description
+
+        Ex 7) Make the "Deal of the day" section disappear when the user is mobile
+        Ex 8) Add to the Welcome Summer destinations a large shadow
+        Ex 9) Create a section Last Minute, in which you'll display the pictures from the destinations as Cards
+        Ex 10) Create a "Testimonial" section, in which the user can find several feedback from fake customers
+        Ex 11) Create a footer with the company information and a button "contact us"
+
+        Ex 11) Create a button next to each section to collapse and reopen the given section
+        Ex 12) Create a method that counts the number of "travels" on the page
+        Ex 13) Create a modal view with a message and a email field
+        Ex 14) When the user clicks on "contact us" the modal is displayed
+        Ex 15) Create a function that adds a "HOT" badge to all the "Welcome Summer" offers
+        Ex 16) Create a function to delete all "cards" from the page
+      -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" href="M2-D3-Pair.css" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Ex 1) Implement a navigation bar, connected to all the sections of the page. 
+     Ex 2) Add a logo into the navigation bar -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#"><i class="material-icons"> flight_takeoff </i> Air Travel</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Welcome Summer <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Testimonial</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Last Minutes</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Deals
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Deal of the Week</a>
+              <a class="dropdown-item" href="#">Deal of the Day</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <!--  Ex 3) Add a Jumbotron section in which you present name and claim of the tour operator-->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4 text-primary">Air Travel</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      </div>
+    </div>
+
+    <!--  Ex 4) Implement the "Deal of the Week" section. In this section you'll display 4 destinations.
+         In this section you should have:
+            - 4 destinations per row when the screen is very large
+            - 3 destinations per row when you are on a tablet (or a smaller window)
+            - 2 destinations per row when you are on a small screen
+          -->
+
+    <div class="container">
+      <h2 id="hldealofweek">Deal of the Week</h2>
+      <div class="row">
+        <div class="card col-sm-6 col-md-4 col-lg-3 pt-2" style="width: 18rem;">
+          <img src="/img/paris.jpg" class="card-img-top" alt="image Paris" />
+          <div class="card-body">
+            <h5 class="card-title">Paris</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Book NOW</a>
+          </div>
+        </div>
+
+        <div class="card col-sm-6 col-md-4 col-lg-3 pt-2" style="width: 18rem;">
+          <img src="/img/picture1.jpg" class="card-img-top" alt="image Fiji" />
+          <div class="card-body">
+            <h5 class="card-title">Fiji</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Book NOW</a>
+          </div>
+        </div>
+
+        <div class="card col-sm-6 col-md-4 col-lg-3 pt-2" style="width: 18rem;">
+          <img src="/img/picture2.png" class="card-img-top" alt="image Thailand" />
+          <div class="card-body">
+            <h5 class="card-title">Thailand</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Book NOW</a>
+          </div>
+        </div>
+
+        <div class="card col-sm-6 col-md-4 col-lg-3 pt-2" style="width: 18rem;">
+          <img src="/img/sydney.jpg" class="card-img-top" alt="image Sydney" />
+          <div class="card-body">
+            <h5 class="card-title">Sydney</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Book NOW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 
+Ex 5) Implement the "Welcome Summer" section. In this section you'll propose 6 destinations
+            In this section you should have:
+                - 6 destinations per row when the screen is very large
+                - 3 destinations per row when you are on a tablet (or a smaller window)
+                - 2 destinations per row when you are on a small screen
+ -->
+
+    <!-- Ex 8) Add to the Welcome Summer destinations a large shadow-->
+    <section id="welcomesummerbg">
+      <div class="border">
+        <h2 id="hlwelcomsummer">Welcome Summer</h2>
+        <div class="row">
+          <div class="card col-sm-6 col-md-4 col-lg-2 pt-2 shadow-lg" style="width: 18rem;">
+            <img src="/img/pit4.jpg" class="card-img-top" alt="image Paris" />
+            <div class="card-body">
+              <h5 class="card-title ">Holland</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+
+          <div class="card col-sm-6 col-md-4 col-lg-2 pt-2 shadow-lg" style="width: 18rem;">
+            <img src="/img/pit5.jpg" class="card-img-top" alt="image Fiji" />
+            <div class="card-body">
+              <h5 class="card-title ">Copenhagen</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+
+          <div class="card col-sm-6 col-md-4 col-lg-2 pt-2 shadow-lg" style="width: 18rem;">
+            <img src="/img/pit6.jpg" class="card-img-top" alt="image Thailand" />
+            <div class="card-body">
+              <h5 class="card-title ">Sweden</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+
+          <div class="card col-sm-6 col-md-4 col-lg-2 pt-2 shadow-lg" style="width: 18rem;">
+            <img src="/img/pit7.jpg" class="card-img-top" alt="image Sydney" />
+            <div class="card-body">
+              <h5 class="card-title ">Germany</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card col-sm-6 col-md-4 col-lg-2 pt-2 shadow-lg" style="width: 18rem;">
+            <img src="/img/picture2.png" class="card-img-top" alt="image Thailand" />
+            <div class="card-body">
+              <h5 class="card-title ">Spain</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card col-sm-6 col-md-4 col-lg-2 pt-2 shadow-lg" style="width: 18rem;">
+            <img src="/img/pit7.jpg" class="card-img-top" alt="image Thailand" />
+            <div class="card-body">
+              <h5 class="card-title">Nigeria</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--         
+        Ex 6) Implement a "Deal of the day" section. In this section you'll have:
+            - 66% of the page with a picture of the destination
+            - 33% with Name, dates, price and a short description
+    -->
+    <!-- Ex 7) Make the "Deal of the day" section disappear when the user is mobile-->
+    <div class="container d-md-none d-lg-block  ">
+      <h2 id="dealoftheday">Deal of the day</h2>
+      <div class="row">
+        <div class="col-8">
+          <img src="/img/picture2.png" class="card-img-top" alt="image Thailand" />
+        </div>
+        <div class="col-4">
+          <p><strong>Name:</strong> Thailand</p>
+          <p><strong>Dates:</strong> Hole November</p>
+          <p><strong>Price:</strong> 1000 USD</p>
+          <p><strong>Description:</strong> The best place on earth. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Ex 9) Create a section Last Minute, in which you'll display the pictures from the destinations as Cards -->
+
+    <!-- Ex 10) Create a "Testimonial" section, in which the user can find several feedback from fake customers -->
+
+    <!-- Section: Testimonials v.1 -->
+    <section class="text-center my-5 p-1">
+      <!-- Section heading -->
+      <h2 class="h1-responsive font-weight-bold my-5">Testimonials</h2>
+      <!-- Section description -->
+      <p class="dark-grey-text w-responsive mx-auto mb-5">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro
+        a pariatur veniam.
+      </p>
+
+      <!-- Grid row -->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+          <!--Card-->
+          <div class="card testimonial-card">
+            <!--Background color-->
+            <div class="card-up info-color"></div>
+            <!--Avatar-->
+            <div class="avatar mx-auto white">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg" class="rounded-circle img-fluid" />
+            </div>
+            <div class="card-body">
+              <!--Name-->
+              <h4 class="font-weight-bold mb-4">John Doe</h4>
+              <hr />
+              <!--Quotation-->
+              <p class="dark-grey-text mt-4"><i class="fas fa-quote-left pr-2"></i>Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <!--Card-->
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+          <!--Card-->
+          <div class="card testimonial-card">
+            <!--Background color-->
+            <div class="card-up blue-gradient"></div>
+            <!--Avatar-->
+            <div class="avatar mx-auto white">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" class="rounded-circle img-fluid" />
+            </div>
+            <div class="card-body">
+              <!--Name-->
+              <h4 class="font-weight-bold mb-4">Anna Aston</h4>
+              <hr />
+              <!--Quotation-->
+              <p class="dark-grey-text mt-4"><i class="fas fa-quote-left pr-2"></i>Neque cupiditate assumenda in maiores repudiandae mollitia architecto.</p>
+            </div>
+          </div>
+          <!--Card-->
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6">
+          <!--Card-->
+          <div class="card testimonial-card">
+            <!--Background color-->
+            <div class="card-up indigo"></div>
+            <!--Avatar-->
+            <div class="avatar mx-auto white">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle img-fluid" />
+            </div>
+            <div class="card-body">
+              <!--Name-->
+              <h4 class="font-weight-bold mb-4">Maria Kate</h4>
+              <hr />
+              <!--Quotation-->
+              <p class="dark-grey-text mt-4"><i class="fas fa-quote-left pr-2"></i>Delectus impedit saepe officiis ab aliquam repellat rem unde ducimus.</p>
+            </div>
+          </div>
+          <!--Card-->
+        </div>
+        <!--Grid column-->
+      </div>
+      <!-- Grid row -->
+    </section>
+    <!-- Section: Testimonials v.1 -->
+    <!-- Ex 11) Create a footer with the company information and a button "contact us" -->
+    
+    <div class="row col-12 badge badge-secondary b-5 text-center" id="count"></div>
+    <footer>
+      
+      <div class="footer bg-primary text-center">
+        <p class="display-4">Air Travel</p>
+        <address>
+          <p class="display-4">Disney Land, Paris</p>
+        </address>
+        <button type="button" class="btn btn-light btn-lg">Contact Us</button>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+
+    
+    window.onload = function() {
+      var travel = document.images.length;
+      var span = document.createElement("span");
+      var node = document.createTextNode("We have " + travel + " travel packages as at " + new Date);
+      span.appendChild(node);
+
+      var element = document.querySelector("#count");
+      element.appendChild(span);
+    }
+    </script>
+  </body>
+</html>
